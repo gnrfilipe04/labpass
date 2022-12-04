@@ -28,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bd597e93-e257-4593-a826-90340250e48c"
+      }
+    },
+    "owner": "lab2dev"
   }
 }
