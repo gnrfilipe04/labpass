@@ -9,9 +9,10 @@ import { Login } from '../screens/Login'
 const { Navigator, Screen, } = createNativeStackNavigator()
 
 export function StackRoutes () {
+
   return (
     <Navigator
-      initialRouteName='welcome'
+      initialRouteName={'welcome'}
       screenOptions={{
         headerShown: false,
       }}

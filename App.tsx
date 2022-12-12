@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFonts, Inter_900Black, Inter_400Regular } from '@expo-google-fonts/inter'
 import { theme } from './src/theme'
 import {

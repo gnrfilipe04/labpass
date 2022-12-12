@@ -1,29 +1,65 @@
-import React, { createContext, ReactNode, useContext, useState } from 'react'
-import { UserDTO } from '../dtos/UserDTO'
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
+import { signOut as authSignOut, User } from 'firebase/auth'
+import { UserCredential } from 'firebase/auth'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { auth } from '../../firebaseconfig'
 
 interface AuthProviderProps {
     children: ReactNode;
 }
 
 interface AuthContext {
-  user: UserDTO
-  addUser: (user: UserDTO) => void
+  userCredential: UserCredential | null
+  getAuthCurrentUser: () => User | null
+  logout: () => Promise<void>
+  saveUserCredential: (user: UserCredential | null) => void
 }
 
 const AuthContext = createContext({} as AuthContext)
 
 export function AuthProvider ({ children, }: AuthProviderProps) {
-  const [ user, setUser, ] = useState<UserDTO>({} as UserDTO)
 
-  function addUser(user: UserDTO){
-    setUser(user)
+  const [ userCredential, setUserCredential, ] = useState<UserCredential | null>(null)
+
+  function saveUserCredential(user: UserCredential | null){
+    setUserCredential(user)
+    AsyncStorage.setItem('@labpass_user', JSON.stringify(user))
   }
+
+  const loadUser = async (): Promise<UserCredential | null> => {
+    const userStorage: string | null = await AsyncStorage.getItem('@labpass_user')
+    const user = userStorage ? JSON.parse(userStorage) : null
+
+    return user
+  }
+
+  const getAuthCurrentUser = (): User | null => {
+    return auth.currentUser
+  }
+
+  async function logout(){
+    saveUserCredential(null)
+    authSignOut(auth)
+    await AsyncStorage.removeItem('@labpass_user')
+    return await auth.signOut()
+  }
+
+  useEffect(() => {
+
+    loadUser()
+      .then(saveUserCredential)
+      .catch(console.log)
+
+  }, [])
+  
 
   return (
     <AuthContext.Provider
       value={{
-        addUser,
-        user,
+        saveUserCredential,
+        logout,
+        getAuthCurrentUser,
+        userCredential,
       }}
     >
       {children}

@@ -9,6 +9,6 @@ export function PageTitle({
   text,
 }: PageTitleProps){
   return (
-    <Text color={'primary.50'} fontFamily={'Inter_900Black'} fontSize={'24px'}>{text}</Text>
+    <Text color={'secondary.50'} fontFamily={'Inter_900Black'} fontSize={'24px'}>{text}</Text>
   )
 }

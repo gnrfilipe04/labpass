@@ -27,7 +27,7 @@ export function MyButton({
   onPress,
 }: MyButtonProps){
   return (
-    <Pressable onPress={onPress} bg={bgColor || 'primary.500'} borderRadius={'full'} p='10px'>
+    <Pressable onPress={onPress} bg={bgColor || 'secondary.500'} borderRadius={'full'} p='10px'>
       <HStack justifyContent={'center'} alignItems='center'>
         { leftIcon && <Icon as={leftIcon} color={leftIconColor} size={iconSize} position='absolute' left={0}/> }
         <Text textAlign={'center'} color={textColor} fontFamily={'Inter_400Regular'}>{title}</Text>

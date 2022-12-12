@@ -11,12 +11,13 @@ export const theme = extendTheme({
   config,
   colors: {
     primary: {
+      '300': '#a855f7',
+      '400': '#9333ea',
+    },
+    secondary: {
       '50': '#fafafa',
       '500': '#71717a',
       '900': '#070808',
-    },
-    secondary: {
-      '400':'#9333ea',
     },
   },
 })

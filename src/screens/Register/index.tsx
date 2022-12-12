@@ -37,7 +37,7 @@ export function Register(){
   }
 
   return (
-    <Center flex={1} bg={'primary.900'}>
+    <Center flex={1} bg={'secondary.900'}>
       <VStack space={'10px'}>
         <PageTitle text='Criar conta'/>
         <FormControl>
@@ -88,7 +88,7 @@ export function Register(){
               }}  
               onPress={handleSubmit(onSubmit)}>Avançar</Button>
             <Button 
-              bg={'primary.500'} 
+              bg={'secondary.500'} 
               w={'110%'} 
               _pressed={{
                 background: 'gray.600',

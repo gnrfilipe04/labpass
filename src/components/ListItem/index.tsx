@@ -48,26 +48,26 @@ export function ListItem({
   }
 
   return (
-    <HStack bg={'primary.900'} space={'10px'} alignItems={'flex-end'}  justifyContent={'space-between'} >
+    <HStack bg={'secondary.900'} space={'10px'} alignItems={'flex-end'}  justifyContent={'space-between'} >
       <HStack alignItems={'center'} space={'10px'} >
         <Icon as={MaterialCommunityIcons}name={iconName} color={iconColor} size={45} />
         <VStack w={'195px'} maxW={'195px'}>
-          <Text fontSize={'14px'} fontFamily={'Inter_400Regular'} color={'primary.500'}>{title}</Text>
+          <Text fontSize={'14px'} fontFamily={'Inter_400Regular'} color={'secondary.500'}>{title}</Text>
           <Text
             numberOfLines={5}
             maxW={195}
             fontSize={'16px'} 
             fontFamily={'Inter_400Regular'} 
-            color={'primary.50'}>{ passInvisible ? passObscure(password) : password}</Text>
+            color={'secondary.50'}>{ passInvisible ? passObscure(password) : password}</Text>
         </VStack>
       </HStack>
       {passInvisible 
-        ? <Icon as={MaterialCommunityIcons} name={'eye-outline'} size={'24px'} color={'primary.500'} onPress={showPass}/>
+        ? <Icon as={MaterialCommunityIcons} name={'eye-outline'} size={'24px'} color={'secondary.500'} onPress={showPass}/>
 
         : (
           <HStack space={'10px'}>
-            <Icon as={MaterialCommunityIcons} name={'content-copy'} size={'24px'} color={'primary.500'} onPress={copyPass}/>
-            <Icon as={MaterialCommunityIcons} name={'eye-off-outline'} size={'24px'} color={'primary.500'} onPress={hidePass}/>
+            <Icon as={MaterialCommunityIcons} name={'content-copy'} size={'24px'} color={'secondary.500'} onPress={copyPass}/>
+            <Icon as={MaterialCommunityIcons} name={'eye-off-outline'} size={'24px'} color={'secondary.500'} onPress={hidePass}/>
           </HStack>
         ) }
     </HStack>

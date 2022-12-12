@@ -55,13 +55,13 @@ export function Form(){
           <Select
             opacity={1}
             placeholder="Escolha a categoria"
-            borderColor={'primary.500'} 
+            borderColor={'secondary.500'} 
             bgColor={'transparent'}
             fontFamily={'Inter_400Regular'}
             fontSize={'16px'} 
-            placeholderTextColor={'primary.500'}
+            placeholderTextColor={'secondary.500'}
             _selectedItem={{
-              placeholderTextColor: 'primary.50',
+              placeholderTextColor: 'secondary.50',
               borderColor: 'secondary.400',
             }}
             onValueChange={(value) => setData({...formData, category: value,})} 
@@ -80,7 +80,7 @@ export function Form(){
             secureTextEntry={!showPass}
             InputRightElement={
               <Pressable onPress={() => setShowPass(!showPass)}>
-                <Icon as={<MaterialCommunityIcons name={showPass ? 'eye-outline' : 'eye-off-outline'} />} size={5} mr="2" color="primary.500"/>
+                <Icon as={<MaterialCommunityIcons name={showPass ? 'eye-outline' : 'eye-off-outline'} />} size={5} mr="2" color="secondary.500"/>
               </Pressable>}
             value={formData.password}
             placeholder="Senha"
@@ -101,7 +101,7 @@ export function Form(){
             _pressed={{
               background: 'gray.600',
             }}  
-            bg={'primary.500'} 
+            bg={'secondary.500'} 
             onPress={() => navigate('home')}>Cancelar</Button>
         </VStack>
       </VStack>
