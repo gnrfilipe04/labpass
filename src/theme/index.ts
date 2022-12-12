@@ -17,6 +17,7 @@ export const theme = extendTheme({
     secondary: {
       '50': '#fafafa',
       '500': '#71717a',
+      '600': '#262626',
       '900': '#070808',
     },
   },

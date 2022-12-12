@@ -6,6 +6,7 @@ export declare global {
             register: undefined;
             home: undefined;
             newPass: undefined;
+            config: undefined;
         }
     }
 }

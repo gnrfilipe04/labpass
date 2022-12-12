@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Center, HStack, Icon, Pressable, Text, VStack } from 'native-base'
+import { Box, Center, HStack, Icon, Menu, Pressable, Text, VStack } from 'native-base'
 import { ListItem } from '../../components/ListItem'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
@@ -9,6 +9,7 @@ import { SwipeListView } from 'react-native-swipe-list-view'
 import { usePermission } from '../../hooks/usePermission'
 import { useAuth } from '../../contexts/AuthContext'
 import { PageTitle } from '../../components/Title'
+import { Avatar } from 'native-base'
 
 export function Home(){
   const { navigate, } = useNavigation()
@@ -29,6 +30,7 @@ export function Home(){
   const onLogout = () => {
     logout()
     navigate('welcome')
+
   }
 
   return (
@@ -38,11 +40,17 @@ export function Home(){
           <Box>
             <HStack space={'5px'} alignItems={'center'}>
               <PageTitle text={`Olá, ${handleUsername(userCredential?.user.displayName as string).firstName}`} />
-              <Icon as={MaterialCommunityIcons} name={'square-edit-outline'} size={'16px'} color={'secondary.50'} onPress={() => navigate('register')}/>
             </HStack>
             <Text color={'secondary.500'} fontFamily={'Inter_400Regular'} fontSize={'12px'}>Suas senhas cadastradas{'\n'}estão logo abaixo.</Text>
           </Box>
-          <Icon as={MaterialCommunityIcons} name={'cog-outline'} mt={'15px'} size={'24px'} color={'secondary.50'} onPress={onLogout}/>
+          <Menu w="50" defaultIsOpen={false} trigger={triggerProps => {
+            return <Pressable  accessibilityLabel="Mais opções" {...triggerProps}>
+              <Avatar bgColor={'primary.400'} source={{ uri: userCredential?.user?.photoURL || undefined,}} />
+            </Pressable>
+          }}>
+            <Menu.Item onPress={onLogout}>Sair</Menu.Item>
+          </Menu>
+          
         </HStack>
         {!passwordList.length
           ? <Center h={'70%'}>
@@ -75,7 +83,6 @@ export function Home(){
               </Pressable>
             )}
             rightOpenValue={-75}
-
           />
         }
       </VStack>
@@ -83,10 +90,12 @@ export function Home(){
         renderInPortal={false} 
         shadow={2}
         size="sm" 
-        bg={'secondary.400'}
+        bg={'primary.400'}
         colorScheme={'purple'}
         icon={<Icon color="white" as={MaterialCommunityIcons} name="plus-thick" size="md" />} 
-        onPress={() => navigate('newPass')} 
+        onPress={() => {
+          navigate('newPass')
+        }} 
       />
     </Box>
   )

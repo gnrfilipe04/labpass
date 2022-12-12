@@ -5,6 +5,7 @@ import { Home } from '../screens/Home'
 import { NewPass } from '../screens/NewPass'
 import { Register } from '../screens/Register'
 import { Login } from '../screens/Login'
+import { Config } from '../screens/Config'
 
 const { Navigator, Screen, } = createNativeStackNavigator()
 
@@ -36,6 +37,10 @@ export function StackRoutes () {
       <Screen
         name='newPass'
         component={NewPass}
+      />
+      <Screen
+        name='config'
+        component={Config}
       />
     </Navigator>
   )
