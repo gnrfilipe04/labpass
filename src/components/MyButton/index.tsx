@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react'
-import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { HStack, Icon, Pressable, Text } from 'native-base'
 import { ColorType } from 'native-base/lib/typescript/components/types'
 
 interface MyButtonProps {
   title: string
   bgColor: ColorType
+  disable?: boolean
   textColor: ColorType
   leftIcon?: ReactNode
   leftIconColor?: ColorType
@@ -18,6 +18,7 @@ interface MyButtonProps {
 export function MyButton({
   title,
   bgColor,
+  disable,
   textColor,
   leftIcon,
   leftIconColor,
@@ -27,7 +28,7 @@ export function MyButton({
   onPress,
 }: MyButtonProps){
   return (
-    <Pressable onPress={onPress} bg={bgColor || 'secondary.500'} borderRadius={'full'} p='10px'>
+    <Pressable _pressed={{ opacity: 0.8, }} opacity={disable ? 0.5 : 1} onPress={() => !disable && onPress()} bg={bgColor || 'secondary.500'} borderRadius={'full'} p='10px'>
       <HStack justifyContent={'center'} alignItems='center'>
         { leftIcon && <Icon as={leftIcon} color={leftIconColor} size={iconSize} position='absolute' left={0}/> }
         <Text textAlign={'center'} color={textColor} fontFamily={'Inter_400Regular'}>{title}</Text>

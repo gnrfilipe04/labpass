@@ -4,12 +4,12 @@ import { ListItem } from '../../components/ListItem'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { usePasswords } from '../../contexts/PasswordsContext'
-import { Fab } from 'native-base'
 import { SwipeListView } from 'react-native-swipe-list-view'
 import { usePermission } from '../../hooks/usePermission'
 import { useAuth } from '../../contexts/AuthContext'
 import { PageTitle } from '../../components/Title'
 import { Avatar } from 'native-base'
+import { MyButton } from '../../components/MyButton'
 
 export function Home(){
   const { navigate, } = useNavigation()
@@ -86,16 +86,15 @@ export function Home(){
           />
         }
       </VStack>
-      <Fab 
-        renderInPortal={false} 
-        shadow={2}
-        size="sm" 
-        bg={'primary.400'}
-        colorScheme={'purple'}
-        icon={<Icon color="white" as={MaterialCommunityIcons} name="plus-thick" size="md" />} 
-        onPress={() => {
-          navigate('newPass')
-        }} 
+
+      <MyButton
+        onPress={() => navigate('newPass')} 
+        leftIcon={<MaterialCommunityIcons name='lastpass'/>}
+        iconSize={26}
+        leftIconColor={'white'}
+        title='Nova Senha'
+        textColor={'white'}
+        bgColor={'primary.400'}      
       />
     </Box>
   )

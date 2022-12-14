@@ -1,10 +1,10 @@
 import React, { useState } from  'react'
 import { HStack, Icon, Text, VStack } from 'native-base'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { TextInput } from 'react-native'
 import * as Clipboard from 'expo-clipboard'
 import { useToast } from 'native-base'
 import { usePermission } from '../../hooks/usePermission'
+import { useNavigation } from '@react-navigation/native'
 
 interface ListItemProps {
   iconName: string;
@@ -21,13 +21,20 @@ export function ListItem({
 }: ListItemProps ){
 
   const [ passInvisible, setPassInvisible, ] = useState(true)
-  const { getAuth, } = usePermission()
+  const { getAuth, getAuthRegister, } = usePermission()
 
-  const showPass = () => {
-    getAuth()
-      .then(response => {
-        response.success && setPassInvisible(false)
-      })
+  const { navigate, } = useNavigation()
+
+  const showPass = async () => {
+
+    const authPatterns = await getAuthRegister()
+
+    if (!authPatterns) return navigate('welcome')
+
+    const resultAuth = await getAuth()
+
+    if(resultAuth.success) return setPassInvisible(false)
+
   }
   const hidePass = () => setPassInvisible(true)
   const toast = useToast()
@@ -36,9 +43,9 @@ export function ListItem({
     return Array.from({length: pass.length,}, (_) => '*').join('')
   }
 
-  function copyPass(){
+  async function copyPass(){
     
-    Clipboard.setString(password)
+    await Clipboard.setStringAsync(password)
 
     setPassInvisible(true)
 

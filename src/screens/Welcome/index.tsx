@@ -1,18 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Center, Text, VStack, HStack } from 'native-base'
 import { Logo } from '../../components/Logo'
-import { useNavigation } from '@react-navigation/native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { usePermission } from '../../hooks/usePermission'
 import { startActivityAsync, ActivityAction } from 'expo-intent-launcher'
 import { SocialButtons } from './blocks/SociaButtons'
 import { MyAlertDialog } from '../../components/MyAlertDialog'
+import { useAuth } from '../../contexts/AuthContext'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function Welcome(){
   const { navigate, } = useNavigation()
   const { getAuth, getAuthRegister, } = usePermission()
+  const { userCredential, } = useAuth()
 
   const [ isOpen, setIsOpen, ] = useState(false)
+  const [ loginEnable, setLoginEnable, ] = useState(false)
 
   const cancelRef = useRef(null)
 
@@ -25,43 +28,37 @@ export function Welcome(){
     startActivityAsync(ActivityAction.SECURITY_SETTINGS)
   }
 
-  const isLoginWithPattern = async () => {
-    return await AsyncStorage.getItem('@lockpick_isLoginWithPattern')
+  function toHome(){
+    navigate('home')
   }
 
-  const getAuthMethods = async () => {
-    return await getAuthRegister()
-  }
-
-  function toRegister(){
-    navigate('register')
-  }
-
-  function toLogin(){
-    navigate('login')
-  }
-
-  async function takeAuthPattern(toScreen: keyof ReactNavigation.RootParamList){
-
-    const authMethod = await getAuthMethods()
-
+  async function takeAuthPattern(){
+    
+    const authMethod = await getAuthRegister()
     if(authMethod){
       getAuth()
-        .then(response => {
+        .then(async response => {
           if(response.success){
-            navigate(toScreen)
+            setLoginEnable(true)
+
+            const user = await AsyncStorage.getItem('@labpass_user')
+            if(!user) return
+            
+            toHome()
+            
           }
         })
     }else {
+      setLoginEnable(false)
       setIsOpen(!isOpen)
     }
   }
 
   useEffect(() => {
-    isLoginWithPattern()
-      .then(loginPattern => { loginPattern && takeAuthPattern('home') })
+    takeAuthPattern()
+
   }, [])
-  
+
   return (
     <>
       <VStack flex={1} bg={'secondary.900'} justifyContent={'center'}>
@@ -85,7 +82,7 @@ export function Welcome(){
           </VStack>
         </Center>
 
-        <SocialButtons />
+        <SocialButtons loginEnable={loginEnable} />
       </VStack>
     </>
   )

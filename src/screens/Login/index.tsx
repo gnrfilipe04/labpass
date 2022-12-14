@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 import { Box, Button, FormControl, Icon, Pressable, Text, VStack } from 'native-base'
@@ -6,11 +6,9 @@ import { MyInput } from '../../components/MyInput'
 import { useForm, SubmitHandler  } from 'react-hook-form'
 import * as yup from 'yup'  
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useAuth } from '../../contexts/AuthContext'
 import { api } from '../../api'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useAuth } from '../../contexts/AuthContext'
-import { auth } from '../../../firebaseconfig'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 type InputProps = {
   email: string,

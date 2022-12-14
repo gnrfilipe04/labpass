@@ -1,14 +1,19 @@
 
 import React, { useState } from 'react'
-import { FormControl, VStack, Select, Button, Pressable, Icon, WarningOutlineIcon } from 'native-base'
-import { useNavigation } from '@react-navigation/native'
-import { usePasswords } from '../../../../contexts/PasswordsContext'
-import { socialIcons } from '../../../../mock/socialIcons'
-import { PasswordDTO } from '../../../../dtos/PasswordDTO'
-import uuid from 'react-native-uuid'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigation } from '@react-navigation/native'
+import { Button, FormControl, Icon, Pressable, VStack } from 'native-base'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import uuid from 'react-native-uuid'
+import * as yup from 'yup'
 import { MyInput } from '../../../../components/MyInput'
+import { MySelect, MySelectProps } from '../../../../components/MySelect'
 import { PageTitle } from '../../../../components/Title'
+import { usePasswords } from '../../../../contexts/PasswordsContext'
+import { PasswordDTO } from '../../../../dtos/PasswordDTO'
+import { socialIcons } from '../../../../mock/socialIcons'
+import { MyButton } from '../../../../components/MyButton'
 
 export interface FormDataProps {
   category: string
@@ -21,12 +26,28 @@ export function Form(){
   const { navigate, } = useNavigation()
   const { addPassword, } = usePasswords()
   
-  const [ formData, setData, ] = useState<FormDataProps>({} as FormDataProps)
   const [ showPass, setShowPass, ] = useState(false)
-  const [ errorMessage, setErrorMessage, ] = useState('')
 
-  const complementFormData = (data: FormDataProps) => {
+  const createUserFormSchema = yup.object().shape({
+    category: yup.string().required('Categoria é obrigatória'),
+    description: yup.string().required('Descrição é obrigatória'),
+    password: yup.string().required('Senha obrigatória').min(6, 'No mínimo 6 caracteres'),
+  })
+
+  const { handleSubmit, formState: { errors, }, control, } = useForm<FormDataProps>({
+    resolver: yupResolver(createUserFormSchema),
+  })
+
+  const selectItems: MySelectProps<FormDataProps>['items'] =  Object.keys(socialIcons).map(iconName => ({
+    key: iconName,
+    label: iconName,
+    value: iconName,
+  }))
+
+  const mountPassword = (data: FormDataProps) => {
     const icon = socialIcons[data.category]
+
+    if(!icon) return
 
     let newData: PasswordDTO = {
       ...data,
@@ -38,71 +59,63 @@ export function Form(){
     return newData
   }
 
-  function onSubmit(data: FormDataProps){
-    if(!formData.category || !formData.description || !formData.password){
-      return setErrorMessage('Todos os campos são obrigatórios')
-    }
-    setErrorMessage('')
-    addPassword(complementFormData(data))
+  const onSubmit: SubmitHandler<FormDataProps> = ( data: FormDataProps ) => {
+    const password = mountPassword(data)
+
+    if(!password) return
+
+    addPassword(password)
     navigate('home')
   }
 
   return (
-    <FormControl isInvalid={Boolean(errorMessage)} isRequired justifyContent={'center'} h={'92%'}>
+    <FormControl isInvalid={Boolean(errors.category || errors.description || errors.password)} isRequired justifyContent={'center'} h={'92%'}>
       <VStack space={'16px'}>
         <PageTitle text={'Nova senha'}/>
         <VStack space={'10px'}>
-          <Select
-            opacity={1}
-            placeholder="Escolha a categoria"
-            borderColor={'secondary.500'} 
-            bgColor={'transparent'}
-            fontFamily={'Inter_400Regular'}
-            fontSize={'16px'} 
-            placeholderTextColor={'secondary.500'}
-            _selectedItem={{
-              placeholderTextColor: 'secondary.50',
-              borderColor: 'secondary.400',
-            }}
-            onValueChange={(value) => setData({...formData, category: value,})} 
-          >
-            {Object.keys(socialIcons).map(iconName => (
-              <Select.Item key={iconName} label={iconName} value={iconName}/>
-            ))}
-          </Select>
-          <MyInput
-            placeholder="Descrição"
-            value={formData.description}
-            onChangeText={(value) => setData({...formData, description: value,})}
+
+          <MySelect 
+            control={control}
+            name='category'
+            placeholder='Escolha a categoria'
+            items={selectItems}
+            errorMessage={errors.category?.message}
           />
+
+          <MyInput
+            control={control}
+            placeholder="Descrição"
+            name='description'
+            errorMessage={errors.description?.message}
+          />
+
           <MyInput 
+            control={control}
             type={'password'}
             secureTextEntry={!showPass}
             InputRightElement={
               <Pressable onPress={() => setShowPass(!showPass)}>
                 <Icon as={<MaterialCommunityIcons name={showPass ? 'eye-outline' : 'eye-off-outline'} />} size={5} mr="2" color="secondary.500"/>
               </Pressable>}
-            value={formData.password}
             placeholder="Senha"
-            onChangeText={(value) => setData({...formData, password: value,})}
+            name='password'
+            errorMessage={errors.password?.message}
           />
-          <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-            {errorMessage}
-          </FormControl.ErrorMessage>
+
         </VStack>
         <VStack mt={'10px'} space={'10px'}>
-          <Button 
-            bg={'secondary.400'}
-            _pressed={{
-              background: 'purple.700',
-            }} 
-            onPress={() => onSubmit(formData)}>Salvar</Button>
-          <Button 
-            _pressed={{
-              background: 'gray.600',
-            }}  
-            bg={'secondary.500'} 
-            onPress={() => navigate('home')}>Cancelar</Button>
+          <MyButton 
+            title='Salvar'
+            onPress={handleSubmit(onSubmit)}
+            textColor='white'
+            bgColor={'primary.400'}
+          />
+          <MyButton 
+            title='Cancelar'
+            onPress={() => navigate('home')}
+            textColor='white'
+            bgColor={'secondary.500'}
+          />
         </VStack>
       </VStack>
     </FormControl>

@@ -23,7 +23,7 @@ export function AuthProvider ({ children, }: AuthProviderProps) {
 
   function saveUserCredential(user: UserCredential | null){
     setUserCredential(user)
-    AsyncStorage.setItem('@labpass_user', JSON.stringify(user))
+    user && AsyncStorage.setItem('@labpass_user', JSON.stringify(user))
   }
 
   const loadUser = async (): Promise<UserCredential | null> => {

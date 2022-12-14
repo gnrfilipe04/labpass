@@ -30,7 +30,7 @@ export function MyInput<T extends FieldValues>({
             isInvalid={Boolean(errorMessage)}
             onBlur={onBlur}
             borderColor={'secondary.500'}
-            selectionColor={'secondary.400'}  
+            selectionColor={'primary.400'}  
             bgColor={'transparent'}
             placeholderTextColor={'secondary.500'}
             fontFamily={'Inter_400Regular'}
@@ -40,7 +40,7 @@ export function MyInput<T extends FieldValues>({
             InputRightElement={InputRightElement}
             _focus={{
               placeholderTextColor: 'secondary.50',
-              borderColor: 'secondary.400',
+              borderColor: 'primary.400',
             }} 
             placeholder={placeholder}
             value={value}
