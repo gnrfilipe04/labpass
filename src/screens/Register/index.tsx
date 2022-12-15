@@ -7,7 +7,7 @@ import { UserDTO } from '../../dtos/UserDTO'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'  
 import { yupResolver } from '@hookform/resolvers/yup'
-import { PageTitle } from '../../components/Title'
+import { PageTitle } from '../../components/PageTitle'
 
 
 

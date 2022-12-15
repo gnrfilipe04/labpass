@@ -7,7 +7,7 @@ import { usePasswords } from '../../contexts/PasswordsContext'
 import { SwipeListView } from 'react-native-swipe-list-view'
 import { usePermission } from '../../hooks/usePermission'
 import { useAuth } from '../../contexts/AuthContext'
-import { PageTitle } from '../../components/Title'
+import { PageTitle } from '../../components/PageTitle'
 import { Avatar } from 'native-base'
 import { MyButton } from '../../components/MyButton'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Center, HStack, Icon, VStack } from 'native-base'
-import { PageTitle } from '../../components/Title'
+import { PageTitle } from '../../components/PageTitle'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 export function Config(){
