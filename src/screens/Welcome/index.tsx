@@ -1,18 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Center, Text, VStack, HStack } from 'native-base'
 import { Logo } from '../../components/Logo'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { usePermission } from '../../hooks/usePermission'
 import { startActivityAsync, ActivityAction } from 'expo-intent-launcher'
 import { SocialButtons } from './blocks/SociaButtons'
 import { MyAlertDialog } from '../../components/MyAlertDialog'
-import { useAuth } from '../../contexts/AuthContext'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function Welcome(){
   const { navigate, } = useNavigation()
   const { getAuth, getAuthRegister, } = usePermission()
-  const { userCredential, } = useAuth()
 
   const [ isOpen, setIsOpen, ] = useState(false)
   const [ loginEnable, setLoginEnable, ] = useState(false)
