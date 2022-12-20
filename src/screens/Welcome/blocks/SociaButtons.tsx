@@ -47,7 +47,7 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
         onPress={() => {
           setLoading(true)
           onLoginGoogle()
-            .then(() => navigate('home'))
+            .then((user) => user && navigate('home'))
             .catch(() => setIsOpenErrorLogin(true))
             .finally(() => setLoading(false))
         }}
@@ -64,7 +64,7 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
         onPress={() => {
           setLoading(true)
           onLoginFacebook()
-            .then(() => navigate('home'))
+            .then((user) => user && navigate('home'))
             .catch(() => setIsOpenErrorLogin(true))
             .finally(() => setLoading(false))
         }}
