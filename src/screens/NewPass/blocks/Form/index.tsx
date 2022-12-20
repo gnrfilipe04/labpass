@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import { FormControl, Icon, Pressable, VStack } from 'native-base'
+import { FormControl, Icon, Pressable, Text, VStack } from 'native-base'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import uuid from 'react-native-uuid'
 import * as yup from 'yup'
@@ -14,6 +14,7 @@ import { usePasswords } from '../../../../contexts/PasswordsContext'
 import { PasswordDTO } from '../../../../dtos/PasswordDTO'
 import { socialIcons } from '../../../../mock/socialIcons'
 import { MyButton } from '../../../../components/MyButton'
+import { generatePass } from '../../../../utils/generatePassword'
 
 export interface FormDataProps {
   category: string
@@ -28,10 +29,12 @@ export function Form(){
   
   const [ showPass, setShowPass, ] = useState(false)
 
+  const [ passGenerated, setPassGenerated, ] = useState<string | undefined>()
+
   const createUserFormSchema = yup.object().shape({
     category: yup.string().required('Categoria é obrigatória'),
     description: yup.string().required('Descrição é obrigatória'),
-    password: yup.string().required('Senha obrigatória').min(6, 'No mínimo 6 caracteres'),
+    password: yup.string().required('Senha obrigatória').min(6, 'No mínimo 6 caracteres').default(passGenerated),
   })
 
   const { handleSubmit, formState: { errors, }, control, } = useForm<FormDataProps>({
@@ -68,6 +71,8 @@ export function Form(){
     navigate('home')
   }
 
+  console.log(passGenerated)
+
   return (
     <FormControl isInvalid={Boolean(errors.category || errors.description || errors.password)} isRequired justifyContent={'center'} h={'92%'}>
       <VStack space={'16px'}>
@@ -89,7 +94,8 @@ export function Form(){
             errorMessage={errors.description?.message}
           />
 
-          <MyInput 
+          <MyInput
+            defaultValue={passGenerated} 
             control={control}
             type={'password'}
             secureTextEntry={!showPass}
@@ -101,9 +107,16 @@ export function Form(){
             name='password'
             errorMessage={errors.password?.message}
           />
+          <Pressable onPress={() => setPassGenerated(generatePass({ length: 15, }))}>
+            <Text 
+              textAlign={'right'}
+              fontFamily={'Inter_400Regular'} 
+              fontSize={16}
+            >Gerar senha</Text>
+          </Pressable>
 
         </VStack>
-        <VStack mt={'10px'} space={'10px'}>
+        <VStack mt={'20px'} space={'10px'}>
           <MyButton 
             title='Salvar'
             onPress={handleSubmit(onSubmit)}
