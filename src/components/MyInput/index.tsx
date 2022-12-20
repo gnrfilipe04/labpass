@@ -10,6 +10,7 @@ interface MyInputProps<T extends FieldValues> {
   name: Path<T>;
   type?: string;
   errorMessage?: string;
+  defaultValue?: string
 }
 
 export function MyInput<T extends FieldValues>({
@@ -20,38 +21,41 @@ export function MyInput<T extends FieldValues>({
   name,
   errorMessage,
   type,
+  defaultValue,
 }: MyInputProps<T>){
   return (
     <>
       <Controller 
         control={control}
-        render={({ field: { onChange, onBlur, value, }, }) => (
-          <Input
-            isInvalid={Boolean(errorMessage)}
-            onBlur={onBlur}
-            borderColor={'secondary.500'}
-            selectionColor={'primary.400'}  
-            bgColor={'transparent'}
-            placeholderTextColor={'secondary.500'}
-            fontFamily={'Inter_400Regular'}
-            fontSize={'16px'} 
-            type={type}
-            secureTextEntry={secureTextEntry}
-            InputRightElement={InputRightElement}
-            _focus={{
-              placeholderTextColor: 'secondary.50',
-              borderColor: 'primary.400',
-            }} 
-            placeholder={placeholder}
-            value={value}
-            onChangeText={onChange}
-          />
-        )}
+        render={({ field: { onChange, onBlur, value, }, }) => {
+          return (
+            <Input
+              defaultValue={defaultValue}
+              isInvalid={Boolean(errorMessage)}
+              onBlur={onBlur}
+              borderColor={'secondary.500'}
+              selectionColor={'primary.400'}  
+              bgColor={'transparent'}
+              placeholderTextColor={'secondary.500'}
+              fontFamily={'Inter_400Regular'}
+              fontSize={'16px'} 
+              type={type}
+              secureTextEntry={secureTextEntry}
+              InputRightElement={InputRightElement}
+              _focus={{
+                placeholderTextColor: 'secondary.50',
+                borderColor: 'primary.400',
+              }} 
+              placeholder={placeholder}
+              value={value}
+              onChangeText={onChange}
+            />
+          )}}
         name={name}
       />
-      <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+      {errorMessage && <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
         {errorMessage}
-      </FormControl.ErrorMessage>
+      </FormControl.ErrorMessage>}
     </>
   )
 }
