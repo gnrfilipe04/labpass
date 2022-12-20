@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest --watch",
+    "test": "jest",
     "test:cov": "jest --coverage"
   },
   "dependencies": {
@@ -40,9 +40,11 @@
     "native-base": "3.4.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-hook-form": "^7.39.4",
+    "react-hook-form": "7.39.4",
     "react-native": "0.70.5",
     "react-native-dotenv": "^3.4.6",
+    "react-native-gesture-handler": "^2.8.0",
+    "react-native-reanimated": "^2.13.0",
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
     "react-native-svg": "13.4.0",

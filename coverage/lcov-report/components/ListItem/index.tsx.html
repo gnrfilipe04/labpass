@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.36% </span>
+                <span class="strong">63.15% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/19</span>
+                <span class='fraction'>12/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/8</span>
+                <span class='fraction'>3/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/15</span>
+                <span class='fraction'>10/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -147,7 +147,11 @@
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -178,9 +182,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -245,6 +249,7 @@ interface ListItemProps {
   title: string;
   password: string;
   testID?: string;
+  passTestID?: string;
 }
 &nbsp;
 export function ListItem({
@@ -253,6 +258,7 @@ export function ListItem({
   iconName, 
   iconColor, 
   testID,
+  passTestID,
 }: ListItemProps ){
 &nbsp;
   const [ passInvisible, setPassInvisible, ] = useState(true)
@@ -260,11 +266,11 @@ export function ListItem({
 &nbsp;
   const { navigate, } = useNavigation()
 &nbsp;
-  const showPass = <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
+  const showPass = async () =&gt; {
 &nbsp;
-    const authPatterns = <span class="cstat-no" title="statement not covered" >await getAuthRegister()</span>
+    const authPatterns = await getAuthRegister()
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!authPatterns) <span class="cstat-no" title="statement not covered" >return navigate('welcome')</span></span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!authPatterns) return navigate('welcome')
 &nbsp;
     const resultAuth = <span class="cstat-no" title="statement not covered" >await getAuth()</span>
 &nbsp;
@@ -304,12 +310,12 @@ export function ListItem({
         &lt;/VStack&gt;
       &lt;/HStack&gt;
       {passInvisible 
-        ? &lt;Icon as={MaterialCommunityIcons} name={'eye-outline'} size={'24px'} color={'secondary.500'} onPress={showPass}/&gt;
+        ? &lt;Icon as={MaterialCommunityIcons} name={'eye-outline'} size={'24px'} color={'secondary.500'} testID={passTestID} onPress={showPass}/&gt;
 &nbsp;
         : (
 <span class="branch-1 cbranch-no" title="branch not covered" >          &lt;HStack space={'10px'}&gt;</span>
-            &lt;Icon as={MaterialCommunityIcons} name={'content-copy'} size={'24px'} color={'secondary.500'} onPress={copyPass}/&gt;
-            &lt;Icon as={MaterialCommunityIcons} name={'eye-off-outline'} size={'24px'} color={'secondary.500'} onPress={hidePass}/&gt;
+            &lt;Icon as={MaterialCommunityIcons} name={'content-copy'} size={'24px'} color={'secondary.500'} testID={passTestID} onPress={copyPass}/&gt;
+            &lt;Icon as={MaterialCommunityIcons} name={'eye-off-outline'} size={'24px'} color={'secondary.500'} testID={passTestID} onPress={hidePass}/&gt;
           &lt;/HStack&gt;
         ) }
     &lt;/HStack&gt;
@@ -322,7 +328,7 @@ export function ListItem({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-15T00:52:27.326Z
+                at 2022-12-15T16:35:04.567Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

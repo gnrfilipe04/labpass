@@ -11,6 +11,8 @@ interface ListItemProps {
   iconColor: string;
   title: string;
   password: string;
+  testID?: string;
+  passTestID?: string;
 }
 
 export function ListItem({
@@ -18,6 +20,8 @@ export function ListItem({
   password, 
   iconName, 
   iconColor, 
+  testID,
+  passTestID,
 }: ListItemProps ){
 
   const [ passInvisible, setPassInvisible, ] = useState(true)
@@ -36,6 +40,7 @@ export function ListItem({
     if(resultAuth.success) return setPassInvisible(false)
 
   }
+  
   const hidePass = () => setPassInvisible(true)
   const toast = useToast()
 
@@ -55,7 +60,7 @@ export function ListItem({
   }
 
   return (
-    <HStack bg={'secondary.900'} space={'10px'} alignItems={'flex-end'}  justifyContent={'space-between'} >
+    <HStack testID={testID} bg={'secondary.900'} space={'10px'} alignItems={'flex-end'}  justifyContent={'space-between'} >
       <HStack alignItems={'center'} space={'10px'} >
         <Icon as={MaterialCommunityIcons}name={iconName} color={iconColor} size={45} />
         <VStack w={'195px'} maxW={'195px'}>
@@ -69,12 +74,12 @@ export function ListItem({
         </VStack>
       </HStack>
       {passInvisible 
-        ? <Icon as={MaterialCommunityIcons} name={'eye-outline'} size={'24px'} color={'secondary.500'} onPress={showPass}/>
+        ? <Icon as={MaterialCommunityIcons} name={'eye-outline'} size={'24px'} color={'secondary.500'} testID={passTestID} onPress={showPass}/>
 
         : (
           <HStack space={'10px'}>
-            <Icon as={MaterialCommunityIcons} name={'content-copy'} size={'24px'} color={'secondary.500'} onPress={copyPass}/>
-            <Icon as={MaterialCommunityIcons} name={'eye-off-outline'} size={'24px'} color={'secondary.500'} onPress={hidePass}/>
+            <Icon as={MaterialCommunityIcons} name={'content-copy'} size={'24px'} color={'secondary.500'} testID={passTestID} onPress={copyPass}/>
+            <Icon as={MaterialCommunityIcons} name={'eye-off-outline'} size={'24px'} color={'secondary.500'} testID={passTestID} onPress={hidePass}/>
           </HStack>
         ) }
     </HStack>

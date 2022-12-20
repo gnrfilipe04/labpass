@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for contexts/PasswordsContext.tsx</title>
+    <title>Code coverage report for hooks/useFacebookSignIn.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">contexts</a> PasswordsContext.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">hooks</a> useFacebookSignIn.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>0/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>0/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/4</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>0/17</span>
             </div>
         
             
@@ -114,44 +114,14 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,57 +135,99 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
-import { PasswordDTO } from '../dtos/PasswordDTO'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as Facebook from 'expo-auth-session/providers/facebook'
+import { ResponseType } from 'expo-auth-session'
+import { FacebookAuthProvider, OAuthCredential, signInWithCredential, UserCredential } from 'firebase/auth'
+import { auth } from '../../firebaseconfig'
+import { useAuth } from '../contexts/AuthContext'
 &nbsp;
-interface PasswordsProviderProps {
-    children: ReactNode;
+interface UseFacebookSigninProps {
+  clientId: string;
+  language?: string
 }
 &nbsp;
-interface PasswordsContext {
-  passwordList: PasswordDTO[]
-  addPassword: (password: PasswordDTO) =&gt; void
-  removePassword: (idPassword: string) =&gt; void
-}
+export function <span class="fstat-no" title="function not covered" >useFacebookSignIn(</span>{
+  clientId,
+  language,
+}: UseFacebookSigninProps) {
 &nbsp;
-const PasswordsContext = <span class="cstat-no" title="statement not covered" >createContext({} as PasswordsContext)</span>
+  const { saveUserCredential, } = <span class="cstat-no" title="statement not covered" >useAuth()</span>
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >PasswordsProvider </span>({ children, }: PasswordsProviderProps) {
-  const [ passwordList, setPasswordList, ] = <span class="cstat-no" title="statement not covered" >useState&lt;PasswordDTO[]&gt;([])</span>
+  const [ request, response, promptAsync, ] = <span class="cstat-no" title="statement not covered" >Facebook.useAuthRequest({</span>
+    responseType: ResponseType.Token,
+    clientId,
+    language: language || 'pt-BR',
+  })
 &nbsp;
-  function <span class="fstat-no" title="function not covered" >addPassword(</span>password: PasswordDTO){
-<span class="cstat-no" title="statement not covered" >    setPasswordList([ ...passwordList, password, ])</span>
+  const getCredential = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(t</span>oken: string): OAuthCredential | null =&gt; {</span>
+    const credential = <span class="cstat-no" title="statement not covered" >FacebookAuthProvider.credential(token)</span>
+<span class="cstat-no" title="statement not covered" >    return credential</span>
   }
 &nbsp;
-  function <span class="fstat-no" title="function not covered" >removePassword(</span>idPassword: string){
-    const passwordsFiltered = <span class="cstat-no" title="statement not covered" >passwordList.filter(<span class="fstat-no" title="function not covered" >pa</span>ss =&gt; <span class="cstat-no" title="statement not covered" >pass.id !== idPassword)</span></span>
-<span class="cstat-no" title="statement not covered" >    setPasswordList(passwordsFiltered)</span>
+  const singInAuthSession = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (credential: OAuthCredential): Promise&lt;UserCredential | null&gt; =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    return signInWithCredential(auth, credential)</span>
+&nbsp;
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    AsyncStorage.getItem('@lockpick_passwords')</span>
-      .then(<span class="fstat-no" title="function not covered" >pa</span>sswords =&gt; <span class="cstat-no" title="statement not covered" >passwords &amp;&amp; setPasswordList(JSON.parse(passwords)))</span>
-  }, [])
+  const onLoginFacebook = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
+    const responseGoogle = <span class="cstat-no" title="statement not covered" >await promptAsync()</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    AsyncStorage.setItem('@lockpick_passwords', JSON.stringify(passwordList))</span>
-  }, [ passwordList.length, ])
+<span class="cstat-no" title="statement not covered" >    if (responseGoogle.type !== 'success') <span class="cstat-no" title="statement not covered" >return null</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;PasswordsContext.Provider
-      value={{
-        passwordList,
-        addPassword,
-        removePassword,
-      }}
-    &gt;
-      {children}
-    &lt;/PasswordsContext.Provider&gt;
-  )
+    const { access_token, } = <span class="cstat-no" title="statement not covered" >responseGoogle.params</span>
+    const credential = <span class="cstat-no" title="statement not covered" >getCredential(access_token)</span>
+    
+<span class="cstat-no" title="statement not covered" >    if (!credential) <span class="cstat-no" title="statement not covered" >return null</span></span>
+    const user = <span class="cstat-no" title="statement not covered" >credential &amp;&amp; await singInAuthSession(credential)</span>
+<span class="cstat-no" title="statement not covered" >    saveUserCredential(user)</span>
+<span class="cstat-no" title="statement not covered" >    return user</span>
+    
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    onLoginFacebook,
+    promptAsync,
+  }
+&nbsp;
 }
-&nbsp;
-export const usePasswords = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >useContext(PasswordsContext)</span></span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

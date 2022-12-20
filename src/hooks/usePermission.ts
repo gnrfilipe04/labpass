@@ -1,9 +1,6 @@
-import { useNavigation } from '@react-navigation/native'
 import * as LocalAuthentication from 'expo-local-authentication'
 
 export function usePermission(){
-
-  const { navigate, } = useNavigation()
 
   const getAuthAvailable = async () => {
     const authMethods = await LocalAuthentication.supportedAuthenticationTypesAsync()

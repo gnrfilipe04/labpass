@@ -1,74 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1671065547475" clover="3.2.0">
-  <project timestamp="1671065547475" name="All files">
-    <metrics statements="171" coveredstatements="9" conditionals="78" coveredconditionals="2" methods="80" coveredmethods="4" elements="329" coveredelements="15" complexity="0" loc="171" ncloc="171" packages="17" files="19" classes="19"/>
-    <package name="components.ListItem">
-      <metrics statements="15" coveredstatements="8" conditionals="8" coveredconditionals="2" methods="6" coveredmethods="3"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\components\ListItem\index.tsx">
-        <metrics statements="15" coveredstatements="8" conditionals="8" coveredconditionals="2" methods="6" coveredmethods="3"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="45" count="6" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="components.Logo">
-      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\components\Logo\index.tsx">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="components.MyAlertDialog">
-      <metrics statements="1" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\components\MyAlertDialog\index.tsx">
-        <metrics statements="1" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="28" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="components.MyButton">
-      <metrics statements="2" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\components\MyButton\index.tsx">
-        <metrics statements="2" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="cond" truecount="0" falsecount="6"/>
-      </file>
-    </package>
-    <package name="components.MyInput">
-      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\components\MyInput\index.tsx">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="components.MySelect">
-      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\components\MySelect\index.tsx">
-        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="components.PageTitle">
-      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\components\PageTitle\index.tsx">
-        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="13" count="1" type="stmt"/>
-      </file>
-    </package>
+<coverage generated="1671123140398" clover="3.2.0">
+  <project timestamp="1671123140398" name="All files">
+    <metrics statements="77" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="27" coveredmethods="0" elements="126" coveredelements="0" complexity="0" loc="77" ncloc="77" packages="2" files="5" classes="5"/>
     <package name="contexts">
       <metrics statements="30" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="15" coveredmethods="0"/>
       <file name="AuthContext.tsx" path="D:\Projects\expo_apps\labpass\src\contexts\AuthContext.tsx">
@@ -108,177 +41,63 @@
         <line num="51" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="routes">
-      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\routes\index.tsx">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="6" count="0" type="stmt"/>
-      </file>
-      <file name="stack.routes.tsx" path="D:\Projects\expo_apps\labpass\src\routes\stack.routes.tsx">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="screens.Config">
-      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\screens\Config\index.tsx">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="7" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="screens.Home">
-      <metrics statements="18" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\screens\Home\index.tsx">
-        <metrics statements="18" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="10" coveredmethods="0"/>
-        <line num="15" count="0" type="stmt"/>
+    <package name="hooks">
+      <metrics statements="47" coveredstatements="0" conditionals="16" coveredconditionals="0" methods="12" coveredmethods="0"/>
+      <file name="useFacebookSignIn.ts" path="D:\Projects\expo_apps\labpass\src\hooks\useFacebookSignIn.ts">
+        <metrics statements="17" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="79" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="91" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="screens.Login">
-      <metrics statements="18" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\screens\Login\index.tsx">
-        <metrics statements="18" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="screens.NewPass">
-      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\screens\NewPass\index.tsx">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="7" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="screens.NewPass.blocks.Form">
-      <metrics statements="19" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="6" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\screens\NewPass\blocks\Form\index.tsx">
-        <metrics statements="19" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="50" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="115" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="screens.Register">
-      <metrics statements="10" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\screens\Register\index.tsx">
-        <metrics statements="10" coveredstatements="0" conditionals="9" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="30" count="0" type="cond" truecount="0" falsecount="7"/>
-        <line num="31" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="96" count="0" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="44" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
       </file>
-    </package>
-    <package name="screens.Welcome">
-      <metrics statements="25" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="0"/>
-      <file name="index.tsx" path="D:\Projects\expo_apps\labpass\src\screens\Welcome\index.tsx">
-        <metrics statements="25" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <file name="useGoogleSignIn.ts" path="D:\Projects\expo_apps\labpass\src\hooks\useGoogleSignIn.ts">
+        <metrics statements="19" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="44" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+      </file>
+      <file name="usePermission.ts" path="D:\Projects\expo_apps\labpass\src\hooks\usePermission.ts">
+        <metrics statements="11" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="screens.Welcome.blocks">
-      <metrics statements="21" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="12" coveredmethods="0"/>
-      <file name="SociaButtons.tsx" path="D:\Projects\expo_apps\labpass\src\screens\Welcome\blocks\SociaButtons.tsx">
-        <metrics statements="21" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="12" coveredmethods="0"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
       </file>
     </package>
   </project>

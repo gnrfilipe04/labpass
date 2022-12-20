@@ -1,5 +1,9 @@
 module.exports = {
   preset: 'jest-expo',
+  testEnvironment: 'node',
+  setupFiles: [
+    'D:/Projects/expo_apps/labpass/src/jest/setup.js',
+  ],
   testPathIgnorePatterns: [
     '/node_modules',
   ],
@@ -8,7 +12,8 @@ module.exports = {
   ],
   collectCoverage: true,
   collectCoverageFrom: [
-    'src/**/*.tsx',
+    'src/hooks/*.ts',
+    'src/contexts/*.tsx',
     '!src/**/*.spec.tsx',
   ],
 }
