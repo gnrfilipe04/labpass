@@ -34,7 +34,10 @@ export function Form(){
   const createUserFormSchema = yup.object().shape({
     category: yup.string().required('Categoria é obrigatória'),
     description: yup.string().required('Descrição é obrigatória'),
-    password: yup.string().required('Senha obrigatória').min(6, 'No mínimo 6 caracteres').default(passGenerated),
+    password: yup.string().required('Senha obrigatória')
+      .min(6, 'No mínimo 6 caracteres')
+      .max(20, 'No máximo 20 caracteres')
+      .default(passGenerated),
   })
 
   const { handleSubmit, formState: { errors, }, control, } = useForm<FormDataProps>({
@@ -70,8 +73,6 @@ export function Form(){
     addPassword(password)
     navigate('home')
   }
-
-  console.log(passGenerated)
 
   return (
     <FormControl isInvalid={Boolean(errors.category || errors.description || errors.password)} isRequired justifyContent={'center'} h={'92%'}>
