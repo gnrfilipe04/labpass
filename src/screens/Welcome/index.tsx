@@ -70,7 +70,7 @@ export function Welcome(){
             onCancel={onClose}
             onConfirm={onConfirm}
           />
-          <Logo />
+          <Logo mb={'10px'}/>
           <VStack>
             <Text mt={'12px'} fontSize={20} fontFamily={'Inter_400Regular'} lineHeight={20} color={'secondary.500'}>Gerencie suas senhas</Text>
             <HStack space={'8px'}>

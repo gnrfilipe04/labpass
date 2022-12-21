@@ -47,12 +47,12 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
         onPress={() => {
           setLoading(true)
           onLoginGoogle()
-            .then(() => navigate('home'))
+            .then((user) => user && navigate('home'))
             .catch(() => setIsOpenErrorLogin(true))
             .finally(() => setLoading(false))
         }}
         disable={!loginEnable}
-        iconSize={26}
+        iconSize={30}
         leftIcon={<MaterialCommunityIcons name={'google'}/>}
         leftIconColor={'primary.300'}
         textColor={'white'} 
@@ -64,12 +64,12 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
         onPress={() => {
           setLoading(true)
           onLoginFacebook()
-            .then(() => navigate('home'))
+            .then((user) => user && navigate('home'))
             .catch(() => setIsOpenErrorLogin(true))
             .finally(() => setLoading(false))
         }}
         disable={!loginEnable}
-        iconSize={26}
+        iconSize={30}
         leftIcon={<MaterialCommunityIcons name='facebook'/>}
         leftIconColor={'primary.300'}
         textColor={'white'} 
@@ -79,7 +79,7 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
       {Platform.OS === 'ios' && <MyButton
         title='Continuar com Apple'
         onPress={() => {}}
-        iconSize={26}
+        iconSize={30}
         disable={!loginEnable}
         leftIcon={<MaterialCommunityIcons name='apple'/>}
         leftIconColor={'primary.300'}
