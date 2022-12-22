@@ -8,6 +8,7 @@ import { GOOGLE_CLIENT_ID, FACEBOOK_CLIENT_ID } from '@env'
 import { MyAlertDialog } from '../../../components/MyAlertDialog'
 import { useNavigation } from '@react-navigation/native'
 import { ActivityIndicator, Platform } from 'react-native'
+import { MotiView } from 'moti'
 
 interface SocialButtonsProps {
   loginEnable: boolean
@@ -41,40 +42,59 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
 
   return (
     <VStack space={'10px'} mt='50px' mx={'20px'}>
-
-      <MyButton
-        title='Continuar com Google'
-        onPress={() => {
-          setLoading(true)
-          onLoginGoogle()
-            .then((user) => user && navigate('home'))
-            .catch(() => setIsOpenErrorLogin(true))
-            .finally(() => setLoading(false))
+      <MotiView
+        from={{
+          transform: [ { translateX: -50, }, ],
         }}
-        disable={!loginEnable}
-        iconSize={30}
-        leftIcon={<MaterialCommunityIcons name={'google'}/>}
-        leftIconColor={'primary.300'}
-        textColor={'white'} 
-        bgColor={'secondary.600'}
-      />
 
-      <MyButton
-        title='Continuar com Facebook'
-        onPress={() => {
-          setLoading(true)
-          onLoginFacebook()
-            .then((user) => user && navigate('home'))
-            .catch(() => setIsOpenErrorLogin(true))
-            .finally(() => setLoading(false))
+        animate={{
+          transform: [ { translateX: 0, }, ],
         }}
-        disable={!loginEnable}
-        iconSize={30}
-        leftIcon={<MaterialCommunityIcons name='facebook'/>}
-        leftIconColor={'primary.300'}
-        textColor={'white'} 
-        bgColor={'secondary.600'}
-      />
+      >
+        <MyButton
+          title='Continuar com Google'
+          onPress={() => {
+            setLoading(true)
+            onLoginGoogle()
+              .then((user) => user && navigate('home'))
+              .catch(() => setIsOpenErrorLogin(true))
+              .finally(() => setLoading(false))
+          }}
+          disable={!loginEnable}
+          iconSize={30}
+          leftIcon={<MaterialCommunityIcons name={'google'}/>}
+          leftIconColor={'primary.300'}
+          textColor={'white'} 
+          bgColor={'secondary.600'}
+        />
+      </MotiView>
+
+      <MotiView
+        from={{
+          transform: [ { translateX: 50, }, ],
+        }}
+
+        animate={{
+          transform: [ { translateX: 0, }, ],
+        }}
+      >
+        <MyButton
+          title='Continuar com Facebook'
+          onPress={() => {
+            setLoading(true)
+            onLoginFacebook()
+              .then((user) => user && navigate('home'))
+              .catch(() => setIsOpenErrorLogin(true))
+              .finally(() => setLoading(false))
+          }}
+          disable={!loginEnable}
+          iconSize={30}
+          leftIcon={<MaterialCommunityIcons name='facebook'/>}
+          leftIconColor={'primary.300'}
+          textColor={'white'} 
+          bgColor={'secondary.600'}
+        />
+      </MotiView>
 
       {Platform.OS === 'ios' && <MyButton
         title='Continuar com Apple'

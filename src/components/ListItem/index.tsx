@@ -40,7 +40,7 @@ export function ListItem({
   const toast = useToast()
 
   function passObscure(pass: string){
-    return Array.from({length: pass.length,}, (_) => '*').join('')
+    return Array.from({ length: pass.length, }, (_) => '•').join('')
   }
 
   async function copyPass(){

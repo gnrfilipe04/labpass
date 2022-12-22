@@ -10,6 +10,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { PageTitle } from '../../components/Title'
 import { Avatar } from 'native-base'
 import { MyButton } from '../../components/MyButton'
+import { MotiView } from 'moti'
 
 export function Home(){
   const { navigate, } = useNavigation()
@@ -59,16 +60,22 @@ export function Home(){
           : <SwipeListView 
             data={passwordList}
             showsVerticalScrollIndicator={false}
+            onScroll={(e) => console.log(e.nativeEvent.contentOffset)}
             style={{ height: '80%', }}
             keyExtractor={(item) => String(item.id)}
             renderItem={({ item, }) => (
               <>
-                <ListItem
-                  iconColor={item.iconColor}
-                  iconName={item.iconName}
-                  title={item.description}
-                  password={item.password}
-                />
+                <MotiView
+                  from={{ transform: [ { scale: 0, }, ], }}
+                  animate={{ transform: [ { scale: 1, }, ], }}
+                >
+                  <ListItem
+                    iconColor={item.iconColor}
+                    iconName={item.iconName}
+                    title={item.description}
+                    password={item.password}
+                  />
+                </MotiView>
                 <Box style={{ height: 20, }}/>
               </>
             )}

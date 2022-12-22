@@ -7,6 +7,7 @@ import { startActivityAsync, ActivityAction } from 'expo-intent-launcher'
 import { SocialButtons } from './blocks/SociaButtons'
 import { MyAlertDialog } from '../../components/MyAlertDialog'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { MotiView } from 'moti'
 
 export function Welcome(){
   const { navigate, } = useNavigation()
@@ -70,16 +71,25 @@ export function Welcome(){
             onCancel={onClose}
             onConfirm={onConfirm}
           />
-          <Logo mb={'10px'}/>
-          <VStack>
-            <Text mt={'12px'} fontSize={20} fontFamily={'Inter_400Regular'} lineHeight={20} color={'secondary.500'}>Gerencie suas senhas</Text>
-            <HStack space={'8px'}>
-              <Text mt={'12px'} fontSize={20} fontFamily={'Inter_400Regular'} lineHeight={20} color={'secondary.500'}>em</Text>
-              <Text mt={'12px'} fontSize={20} fontFamily={'Inter_900Black'} lineHeight={20} color={'secondary.50'}>um só lugar.</Text>
-            </HStack>
-          </VStack>
-        </Center>
+          <MotiView 
+            from={{
+              transform: [ { translateY: -50, }, ],
+            }}
 
+            animate={{
+              transform: [ { translateY: 0, }, ],
+            }}
+          >
+            <VStack alignItems={'center'}>
+              <Logo mb={'20px'}/>
+              <Text fontSize={20} fontFamily={'Inter_400Regular'} lineHeight={20} color={'secondary.500'}>Gerencie suas senhas</Text>
+              <HStack space={'8px'}>
+                <Text mt={'12px'} fontSize={20} fontFamily={'Inter_400Regular'} lineHeight={20} color={'secondary.500'}>em</Text>
+                <Text mt={'12px'} fontSize={20} fontFamily={'Inter_900Black'} lineHeight={20} color={'secondary.50'}>um só lugar.</Text>
+              </HStack>
+            </VStack>
+          </MotiView>
+        </Center>
         <SocialButtons loginEnable={loginEnable} />
       </VStack>
     </>
