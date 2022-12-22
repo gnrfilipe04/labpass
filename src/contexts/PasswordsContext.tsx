@@ -18,7 +18,7 @@ export function PasswordsProvider ({ children, }: PasswordsProviderProps) {
   const [ passwordList, setPasswordList, ] = useState<PasswordDTO[]>([])
 
   function addPassword(password: PasswordDTO){
-    setPasswordList([ ...passwordList, password, ])
+    setPasswordList([ password,...passwordList, ])
   }
 
   function removePassword(idPassword: string){

@@ -8,6 +8,7 @@ import {
 import { Routes } from './src/routes'
 import { PasswordsProvider } from './src/contexts/PasswordsContext'
 import { AuthProvider } from './src/contexts/AuthContext'
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function App() {
 
@@ -20,8 +21,15 @@ export default function App() {
     return null
   }
 
+  const nativeBaseConfig = {
+    
+    dependencies: {
+      'linear-gradient': LinearGradient,
+    },
+  }
+
   return (
-    <NativeBaseProvider theme={theme}>
+    <NativeBaseProvider theme={theme} config={nativeBaseConfig}>
       <AuthProvider>
         <PasswordsProvider>
           <StatusBar
