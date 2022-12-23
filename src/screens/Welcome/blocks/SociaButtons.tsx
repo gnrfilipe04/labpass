@@ -4,15 +4,19 @@ import { Box, VStack } from 'native-base'
 import { MyButton } from '../../../components/MyButton'
 import { useGoogleSignIn } from '../../../hooks/useGoogleSignIn'
 import { useFacebookSignIn } from '../../../hooks/useFacebookSignIn'
-import { GOOGLE_CLIENT_ID, FACEBOOK_CLIENT_ID } from '@env'
+import { GOOGLE_WEB_CLIENT_ID, FACEBOOK_CLIENT_ID, GOOGLE_IOS_CLIENT_ID, GOOGLE_ANDROID_CLIENT_ID } from '@env'
 import { MyAlertDialog } from '../../../components/MyAlertDialog'
 import { useNavigation } from '@react-navigation/native'
 import { ActivityIndicator, Platform } from 'react-native'
 import { MotiView } from 'moti'
 
+import * as WebBrowser from 'expo-web-browser'
+
 interface SocialButtonsProps {
   loginEnable: boolean
 }
+
+WebBrowser.maybeCompleteAuthSession()
 
 export function SocialButtons({ loginEnable, }: SocialButtonsProps){
 
@@ -33,7 +37,9 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
   }
 
   const { onLoginGoogle, } = useGoogleSignIn({
-    clientId: GOOGLE_CLIENT_ID,
+    clientId: GOOGLE_WEB_CLIENT_ID,
+    iosClientId: GOOGLE_IOS_CLIENT_ID,
+    androidClientId: GOOGLE_ANDROID_CLIENT_ID,
   })
 
   const { onLoginFacebook, } = useFacebookSignIn({
@@ -53,19 +59,19 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
       >
         <MyButton
           title='Continuar com Google'
-          onPress={() => {
-            setLoading(true)
-            onLoginGoogle()
-              .then((user) => user && navigate('home'))
-              .catch(() => setIsOpenErrorLogin(true))
-              .finally(() => setLoading(false))
-          }}
           disable={!loginEnable}
           iconSize={30}
           leftIcon={<MaterialCommunityIcons name={'google'}/>}
           leftIconColor={'primary.300'}
           textColor={'white'} 
           bgColor={'secondary.600'}
+          onPress={() => {
+            setLoading(true)
+            onLoginGoogle()
+              .then((session) => session?.type === 'success' && navigate('home'))
+              .catch(() => setIsOpenErrorLogin(true))
+              .finally(() => setLoading(false))
+          }}
         />
       </MotiView>
 

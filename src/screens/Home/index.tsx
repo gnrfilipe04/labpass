@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Center, Container, HStack, Icon, Menu, Pressable, Text, VStack } from 'native-base'
+import { Box, Center, HStack, Icon, Menu, Pressable, Text, VStack } from 'native-base'
 import { ListItem } from '../../components/ListItem'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
@@ -39,14 +39,12 @@ export function Home(){
       <VStack >
         <HStack justifyContent={'space-between'}>
           <Box>
-            <HStack space={'5px'} alignItems={'center'}>
-              <PageTitle text={`Olá, ${handleUsername(userCredential?.user.displayName as string).firstName}`} />
-            </HStack>
+            <PageTitle text={userCredential?.given_name ? `Olá, ${userCredential?.given_name}` : ''} />
             <Text color={'secondary.500'} fontFamily={'Inter_400Regular'} fontSize={'13px'}>Suas senhas cadastradas{'\n'}estão logo abaixo.</Text>
           </Box>
           <Menu w="50" defaultIsOpen={false} trigger={triggerProps => {
             return <Pressable  accessibilityLabel="Mais opções" {...triggerProps}>
-              <Avatar borderColor={'primary.300'} borderWidth={2} borderStyle={'solid'} bgColor={'primary.400'} source={{ uri: userCredential?.user?.photoURL || undefined, width: 30, height: 30,}} />
+              <Avatar borderColor={'primary.300'} borderWidth={2} borderStyle={'solid'} bgColor={'primary.400'} source={{ uri: userCredential?.picture || undefined, width: 30, height: 30,}} />
             </Pressable>
           }}>
             <Menu.Item onPress={onLogout}>Sair</Menu.Item>

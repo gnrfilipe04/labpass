@@ -1,50 +1,51 @@
+import { useEffect, useState } from 'react'
 import * as Google from 'expo-auth-session/providers/google'
-import { GoogleAuthProvider, signInWithCredential, UserCredential, OAuthCredential } from 'firebase/auth'
-import { auth } from '../../firebaseconfig'
 import { useAuth } from '../contexts/AuthContext'
+import { UserDTO } from '../dtos/UserDTO'
 
 interface UseGoogleSigninProps {
   clientId: string;
+  iosClientId: string;
+  androidClientId: string;
   language?: string
 }
 
 export function useGoogleSignIn({ 
   clientId,
+  androidClientId,
+  iosClientId,
   language,
 }: UseGoogleSigninProps){
 
   const { saveUserCredential, } = useAuth()
 
+  const [ accessToken, setAccessToken, ] = useState<string | undefined | null>(null)
+  
   const [ request, response, promptAsync, ] = Google.useIdTokenAuthRequest(
     {
       clientId,
+      androidClientId,
+      iosClientId,
       language: language || 'pt-BR',
     }
   )
 
-  const getCredential = (token: string): OAuthCredential | null => {
-    const credential = GoogleAuthProvider.credential(token)
-    return credential
+  async function fetchUserInfo(){
+    let response = await fetch('https://www.googleapis.com/userinfo/v2/me', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+
+    const userInfo: UserDTO | null = await response.json()
+    console.log({ userInfo, })
+    saveUserCredential(userInfo)
   }
 
-  const singInAuthSession = async (credential: OAuthCredential): Promise<UserCredential | null> => {
-    return signInWithCredential(auth, credential)
-
-  }
 
   const onLoginGoogle = async () => {
     try {
-      const responseGoogle = await promptAsync()
-  
-      if(responseGoogle.type !== 'success') return null
-  
-      const { id_token, } = responseGoogle.params
-      const credential = getCredential(id_token)
-
-      if (!credential) return null
-      const user = credential ? await singInAuthSession(credential) : null
-      saveUserCredential(user)
-      return user
+      return await promptAsync()
 
     }catch(e){
       console.log(e)
@@ -52,7 +53,19 @@ export function useGoogleSignIn({
 
   }
   
+  useEffect(() => {
+    if(response?.type === 'success'){
+      
+      setAccessToken(response.authentication?.accessToken)
+      accessToken && fetchUserInfo()
+    }
+
+  }, [ response, accessToken, ])
+  
   return {
+    accessToken,
+    request,
+    response,
     onLoginGoogle,
   }
 
