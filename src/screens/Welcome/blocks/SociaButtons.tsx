@@ -3,8 +3,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Box, VStack } from 'native-base'
 import { MyButton } from '../../../components/MyButton'
 import { useGoogleSignIn } from '../../../hooks/useGoogleSignIn'
-import { useFacebookSignIn } from '../../../hooks/useFacebookSignIn'
-import { GOOGLE_WEB_CLIENT_ID, FACEBOOK_CLIENT_ID, GOOGLE_IOS_CLIENT_ID, GOOGLE_ANDROID_CLIENT_ID } from '@env'
+import { GOOGLE_WEB_CLIENT_ID, GOOGLE_IOS_CLIENT_ID, GOOGLE_ANDROID_CLIENT_ID } from '@env'
 import { MyAlertDialog } from '../../../components/MyAlertDialog'
 import { useNavigation } from '@react-navigation/native'
 import { ActivityIndicator, Platform } from 'react-native'
@@ -42,10 +41,6 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
     androidClientId: GOOGLE_ANDROID_CLIENT_ID,
   })
 
-  const { onLoginFacebook, } = useFacebookSignIn({
-    clientId: FACEBOOK_CLIENT_ID,
-  })
-
   return (
     <VStack space={'10px'} mt='50px' mx={'20px'}>
       <MotiView
@@ -72,33 +67,6 @@ export function SocialButtons({ loginEnable, }: SocialButtonsProps){
               .catch(() => setIsOpenErrorLogin(true))
               .finally(() => setLoading(false))
           }}
-        />
-      </MotiView>
-
-      <MotiView
-        from={{
-          transform: [ { translateX: 50, }, ],
-        }}
-
-        animate={{
-          transform: [ { translateX: 0, }, ],
-        }}
-      >
-        <MyButton
-          title='Continuar com Facebook'
-          onPress={() => {
-            setLoading(true)
-            onLoginFacebook()
-              .then((user) => user && navigate('home'))
-              .catch(() => setIsOpenErrorLogin(true))
-              .finally(() => setLoading(false))
-          }}
-          disable={!loginEnable}
-          iconSize={30}
-          leftIcon={<MaterialCommunityIcons name='facebook'/>}
-          leftIconColor={'primary.300'}
-          textColor={'white'} 
-          bgColor={'secondary.600'}
         />
       </MotiView>
 

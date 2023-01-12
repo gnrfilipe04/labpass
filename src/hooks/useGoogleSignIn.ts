@@ -17,7 +17,7 @@ export function useGoogleSignIn({
   language,
 }: UseGoogleSigninProps){
 
-  const { saveUserCredential, } = useAuth()
+  const { saveUserCredential, userCredential, } = useAuth()
 
   const [ accessToken, setAccessToken, ] = useState<string | undefined | null>(null)
   
@@ -38,7 +38,6 @@ export function useGoogleSignIn({
     })
 
     const userInfo: UserDTO | null = await response.json()
-    console.log({ userInfo, })
     saveUserCredential(userInfo)
   }
 
@@ -54,6 +53,7 @@ export function useGoogleSignIn({
   }
   
   useEffect(() => {
+
     if(response?.type === 'success'){
       
       setAccessToken(response.authentication?.accessToken)
@@ -61,6 +61,7 @@ export function useGoogleSignIn({
     }
 
   }, [ response, accessToken, ])
+
   
   return {
     accessToken,
