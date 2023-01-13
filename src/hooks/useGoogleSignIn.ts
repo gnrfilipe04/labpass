@@ -17,7 +17,7 @@ export function useGoogleSignIn({
   language,
 }: UseGoogleSigninProps){
 
-  const { saveUserCredential, userCredential, } = useAuth()
+  const { saveUserCredential, } = useAuth()
 
   const [ accessToken, setAccessToken, ] = useState<string | undefined | null>(null)
   

@@ -4,6 +4,7 @@
     "slug": "labpass",
     "version": "1.0.0",
     "orientation": "portrait",
+    "originalFullName": "@lab2dev/labpass",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
