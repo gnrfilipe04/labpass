@@ -2767,6 +2767,11 @@
   resolved "https://registry.npmjs.org/@types/qs/-/qs-6.9.7.tgz"
   integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
 
+"@types/react-native-crypto-js@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-crypto-js/-/react-native-crypto-js-1.0.0.tgz#1bbe9b469f0f97e0689eb6fb51b836cd70ea92d2"
+  integrity sha512-YqNZiTWsEoP0bqN7gQShOjskK/cJFpBhgVMMIGfUnbGeSytHT2SSrT1TVW1f9yNP5x4uSpry2Rq2BQS7qcC4fQ==
+
 "@types/react-native@~0.64.12":
   version "0.64.29"
   resolved "https://registry.npmjs.org/@types/react-native/-/react-native-0.64.29.tgz"
@@ -7575,6 +7580,11 @@ react-native-codegen@^0.70.6:
     flow-parser "^0.121.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-crypto-js@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-crypto-js/-/react-native-crypto-js-1.0.0.tgz#e677e022e147f41b35614416c92d655f87e2450a"
+  integrity sha512-FNbLuG/HAdapQoybeZSoes1PWdOj0w242gb+e1R0hicf3Gyj/Mf8M9NaED2AnXVOX01b2FXomwUiw1xP1K+8sA==
 
 react-native-dotenv@^3.4.6:
   version "3.4.6"

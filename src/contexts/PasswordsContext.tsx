@@ -1,6 +1,7 @@
 import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 import { PasswordDTO } from '../dtos/PasswordDTO'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { decrypt, encrypt } from '../utils/crypto';
 
 interface PasswordsProviderProps {
     children: ReactNode;
@@ -26,13 +27,32 @@ export function PasswordsProvider ({ children, }: PasswordsProviderProps) {
     setPasswordList(passwordsFiltered)
   }
 
+  async function setPassStorage(){
+    const encryptedPasswords = passwordList.map(pass => ({...pass, password: encrypt(pass.password)}))
+    
+    AsyncStorage.setItem('@lockpick_passwords', JSON.stringify(encryptedPasswords))
+  }
+
+  async function getPassStorage(){
+
+    const storagePass = await AsyncStorage.getItem('@lockpick_passwords')
+
+    if(!storagePass) return
+
+    const passToJson: PasswordDTO[] = JSON.parse(storagePass)
+
+    const decryptedPasswords = passToJson.map(pass => ({...pass, password: decrypt(pass.password)}))
+
+    setPasswordList(decryptedPasswords)
+      
+  }
+
   useEffect(() => {
-    AsyncStorage.getItem('@lockpick_passwords')
-      .then(passwords => passwords && setPasswordList(JSON.parse(passwords)))
+    getPassStorage()
   }, [])
 
   useEffect(() => {
-    AsyncStorage.setItem('@lockpick_passwords', JSON.stringify(passwordList))
+    setPassStorage()
   }, [ passwordList.length, ])
 
   return (
