@@ -8,7 +8,9 @@ interface AuthProviderProps {
 
 interface AuthContext {
   userCredential: UserDTO | null
+  loginEnable: boolean
   logout: () => Promise<void>
+  setLoginEnable: React.Dispatch<React.SetStateAction<boolean>>
   saveUserCredential: (user: UserDTO | null) => void
 }
 
@@ -17,6 +19,8 @@ const AuthContext = createContext({} as AuthContext)
 export function AuthProvider ({ children, }: AuthProviderProps) {
 
   const [ userCredential, setUserCredential, ] = useState<UserDTO | null>(null)
+
+  const [ loginEnable, setLoginEnable, ] = useState(false)
 
   function saveUserCredential(user: UserDTO | null){
     setUserCredential(user)
@@ -31,6 +35,7 @@ export function AuthProvider ({ children, }: AuthProviderProps) {
   }
 
   async function logout(){
+    setLoginEnable(false)
     saveUserCredential(null)
     return await AsyncStorage.removeItem('@labpass_user')
   }
@@ -47,6 +52,8 @@ export function AuthProvider ({ children, }: AuthProviderProps) {
   return (
     <AuthContext.Provider
       value={{
+        loginEnable,
+        setLoginEnable,
         saveUserCredential,
         logout,
         userCredential,

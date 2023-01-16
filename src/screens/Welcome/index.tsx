@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Center, Text, VStack, HStack } from 'native-base'
+import { Center, Text, VStack, HStack, View } from 'native-base'
 import { Logo } from '../../components/Logo'
 import { useNavigation } from '@react-navigation/native'
 import { usePermission } from '../../hooks/usePermission'
@@ -8,13 +8,16 @@ import { SocialButtons } from './blocks/SociaButtons'
 import { MyAlertDialog } from '../../components/MyAlertDialog'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { MotiView } from 'moti'
+import { Visibility } from '../../components/Visibility'
+import { MyButton } from '../../components/MyButton'
+import { useAuth } from '../../contexts/AuthContext'
 
 export function Welcome(){
   const { navigate, } = useNavigation()
   const { getAuth, getAuthRegister, } = usePermission()
+  const { loginEnable, setLoginEnable } = useAuth()
 
   const [ isOpen, setIsOpen, ] = useState(false)
-  const [ loginEnable, setLoginEnable, ] = useState(false)
 
   const cancelRef = useRef(null)
 
@@ -37,15 +40,18 @@ export function Welcome(){
     if(authMethod){
       getAuth()
         .then(async response => {
-          if(response.success){
-            setLoginEnable(true)
 
-            const user = await AsyncStorage.getItem('@labpass_user')
-            if(!user) return
-            
-            toHome()
-            
+          if(!response.success){
+            return setLoginEnable(false)
           }
+
+          setLoginEnable(true)
+
+          const user = await AsyncStorage.getItem('@labpass_user')
+          if(!user) return
+          
+          toHome()
+
         })
     }else {
       setLoginEnable(false)
@@ -60,8 +66,8 @@ export function Welcome(){
 
   return (
     <>
-      <VStack flex={1} bg={'secondary.900'} justifyContent={'center'}>
-        <Center>
+      <VStack flex={1} bg={'secondary.900'} justifyContent={'center'} >
+        <Center >
           <MyAlertDialog
             title='Padrão de segurança'
             description={'Não foi possível encontrar nenhum registro de padrão de segurança.\nAdicione um registro de padrão de segurança no seu dispositivo para ter acesso ao aplicativo.'} 
@@ -71,6 +77,8 @@ export function Welcome(){
             onCancel={onClose}
             onConfirm={onConfirm}
           />
+        
+        </Center>
           <MotiView 
             from={{
               transform: [ { translateY: -50, }, ],
@@ -87,10 +95,25 @@ export function Welcome(){
                 <Text mt={'12px'} fontSize={20} fontFamily={'Inter_400Regular'} lineHeight={20} color={'secondary.500'}>em</Text>
                 <Text mt={'12px'} fontSize={20} fontFamily={'Inter_900Black'} lineHeight={20} color={'secondary.50'}>um só lugar.</Text>
               </HStack>
+              
+
             </VStack>
           </MotiView>
-        </Center>
+          
         <SocialButtons loginEnable={loginEnable} />
+
+        <Visibility 
+          visible={!loginEnable}
+          children={
+          <View position={'absolute'} bottom={5} left={6} right={6}>
+            <MyButton
+            title='Usar senha do dispositivo'
+            textColor={'white'} 
+            bgColor={'primary.400'}
+            onPress={takeAuthPattern} />
+          </View>}
+        />
+
       </VStack>
     </>
   )
