@@ -35,7 +35,7 @@ export function Form(){
     category: yup.string().required('Categoria é obrigatória'),
     description: yup.string().required('Descrição é obrigatória'),
     password: yup.string().required('Senha obrigatória')
-      .min(6, 'No mínimo 6 caracteres')
+      .min(4, 'No mínimo 4 caracteres')
       .max(20, 'No máximo 20 caracteres')
       .default(passGenerated),
   })
