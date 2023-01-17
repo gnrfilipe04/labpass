@@ -7,4 +7,7 @@ declare module '@env' {
   export const APP_ID: string
   export const API_KEY: string
   export const FACEBOOK_CLIENT_ID: string
+  export const FACEBOOK_REDIRECT_URI: string
+  export const FACEBOOK_CLIENT_SECRET: string
+  export const CRYPTO_KEY: string
 }

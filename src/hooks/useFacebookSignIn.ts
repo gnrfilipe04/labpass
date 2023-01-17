@@ -2,6 +2,7 @@ import { startAsync } from 'expo-auth-session'
 import { useAuth } from '../contexts/AuthContext'
 import { UserDTO } from '../dtos/UserDTO';
 import axios from 'axios';
+import { FACEBOOK_CLIENT_SECRET, FACEBOOK_REDIRECT_URI } from '@env';
 
 interface UseFacebookSigninProps {
   clientId: string;
@@ -28,9 +29,6 @@ export function useFacebookSignIn({
 }: UseFacebookSigninProps) {
 
   const { saveUserCredential, } = useAuth()
-
-  const FACEBOOK_REDIRECT_URI = 'https://auth.expo.io/@lab2dev/labpass'
-  const FACEBOOK_CLIENT_SECRET = 'f2d24e4b0b94419241202e2ecde035b7'
 
   async function getCode(){
     
